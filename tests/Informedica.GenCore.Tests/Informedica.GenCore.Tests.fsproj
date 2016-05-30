@@ -293,8 +293,8 @@
     <Compile Include="FsCheckAddin.fs">
       <Paket>True</Paket>
     </Compile>
-    <Compile Include="Library1.fs" />
     <None Include="Script.fsx" />
+    <Compile Include="BuildTest.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -315,5 +315,12 @@
       <Private>True</Private>
       <Paket>True</Paket>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Informedica.GenCore.Lib\Informedica.GenCore.Lib.fsproj">
+      <Name>Informedica.GenCore.Lib</Name>
+      <Project>{391af72a-facd-4e1b-b7fc-e984791c1fba}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 </Project>
