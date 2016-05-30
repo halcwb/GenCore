@@ -7,3 +7,4 @@
 #r "System.Core.dll"
 #r "System.dll"
 #r "System.Numerics.dll"
+#r "../../../packages/Informedica.GenUtils.Lib/lib/net45/Informedica.GenUtils.Lib.dll"
