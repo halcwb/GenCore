@@ -49,7 +49,7 @@ publishnuget.cmd
 !*.fsproj
 
 # Add configurarion files
-!*App.config
+!*.config
 
 # Add fsharp source files
 !*.fs
