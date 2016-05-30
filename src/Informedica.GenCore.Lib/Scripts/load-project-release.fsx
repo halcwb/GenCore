@@ -2,4 +2,5 @@
 #I __SOURCE_DIRECTORY__
 #load "load-references-release.fsx"
 #load "../Result.fs"
+      "../WrappedValue.fs"
       "../WrappedString.fs"

@@ -4,6 +4,8 @@
 /// value primitives
 module WrappedString =
 
+    open Informedica.GenUtils.Lib.BCL
+
     type WrappedString = WrappedString of string
 
     /// Type and functions that 
@@ -19,7 +21,7 @@ module WrappedString =
 
         let toString (Id s) = s
 
-    /// Helper functions for `Informedica.GenSolver.Variable.Name` type
+    /// Helper functions for the `Name` type
     [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
     module Name =
         

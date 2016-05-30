@@ -60,6 +60,7 @@
       <Paket>True</Paket>
     </Content>
     <Compile Include="Result.fs" />
+    <Compile Include="WrappedValue.fs" />
     <Compile Include="WrappedString.fs" />
     <None Include="Scripts\load-references-debug.fsx" />
     <None Include="Scripts\load-project-debug.fsx" />

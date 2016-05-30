@@ -1,7 +1,45 @@
 ﻿namespace Informedica.GenCore.Lib
 
+/// Type and functions that model and process
+/// a `Message` to be used with the `Result` monad
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module Result =
+module Message =
+
+    open System
+
+    /// A `Message` can be used to convey
+    ///
+    /// * Information in case of success
+    /// * Warning when there is a success but might not be what is expected
+    /// * Error when there is no success but the user can do something about it
+    /// * Exception when there is no success and only a programmer can fix it
+    type Message = 
+        | Info    of string
+        | Warning of string
+        | Error   of string
+        | Except  of Exception
+
+    /// Create an info `Message`
+    let info s = s |> Info
+
+    /// Create a warning `Message`
+    let warn s = s |> Warning
+
+    /// Create an error `Message`
+    let err s = s |> Error
+
+    /// Create an exception `Message`
+    let exc e = e |> Except
+
+    let apply fInfo fWarn fErr fExc = function
+        | Info s    -> s |> fInfo
+        | Warning s -> s |> fWarn
+        | Error s   -> s |> fErr
+        | Except s  -> s |> fExc 
+
+
+[<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
+module Result =        
 
     open Informedica.GenUtils.Lib
 
@@ -49,12 +87,6 @@ module Result =
     /// Switched parameter from `bindR`.
     let bindL result f = bindR f result
 
-    /// Infix version of `bindL`.
-    let (>>=) = bindL
-
-    /// Infix version of `bindR`.
-    let (<<=) = bindR
-
     /// Given a function wrapped in a `Result`
     /// and a value wrapped in a `Result`,
     /// apply the function to the value only if both are `Succ`.
@@ -66,9 +98,6 @@ module Result =
         | Fail errs,       Succ (_, msgs) 
         | Succ (_, msgs),  Fail errs  -> errs @ msgs   |> Fail
         | Fail errs1,      Fail errs2 -> errs1 @ errs2 |> Fail 
-
-    /// Infix version of `applyR`.
-    let (<*>) = applyR
 
     /// Given a function that transforms a value
     /// apply it only if the `Result` is on the Success branch.
@@ -90,9 +119,6 @@ module Result =
     let lift4R f result1 result2 result3 result4 =
         let f' = lift3R f result1 result2 result3 
         applyR f' result4
-
-    /// infix version of liftR.
-    let (<!>) = liftR
 
     /// synonym for liftR.
     let mapR = liftR
@@ -158,4 +184,28 @@ module Result =
     let getMessages = function
         | Succ(_, msgs) | Fail msgs -> msgs
 
+    /// Wrap a function in a try catch block
+    /// and pass the exception to a the fail 
+    /// branch.
+    let tryCatch f x =  try x |> f with e -> e |> Message.exc |> fail
 
+    /// Contains the infix operators for
+    /// 
+    /// * `>>=` bindL: bind a `Result` to a function that processes the contents of the result
+    /// * `<<=` bindR: bind a function that processes the contents of a result to a `Result`
+    /// * `<!>` liftR: lift a normal function to process and return a `Result`, note the function
+    /// should be a 'non failing' function without messages
+    /// * `<*>` applyR: apply a `Result` to a function that processes and returns a `Result`
+    module Operators =
+    
+        /// Infix version of `bindL`.
+        let (>>=) = bindL
+
+        /// Infix version of `bindR`.
+        let (<<=) = bindR
+
+        /// infix version of liftR.
+        let (<!>) = liftR
+
+        /// Infix version of `applyR`.
+        let (<*>) = applyR
