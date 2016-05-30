@@ -294,8 +294,6 @@
       <Paket>True</Paket>
     </Compile>
     <Compile Include="BuildTest.fs" />
-    <None Include="Scripts\load-references-debug.fsx" />
-    <None Include="Scripts\load-project-debug.fsx" />
     <None Include="Scripts\Script.fsx" />
     <None Include="Scripts\load-references-release.fsx" />
     <None Include="Scripts\load-project-release.fsx" />
