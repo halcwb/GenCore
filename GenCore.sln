@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Informedica.GenCore.Lib", "src\Informedica.GenCore.Lib\Informedica.GenCore.Lib.fsproj", "{391AF72A-FACD-4E1B-B7FC-E984791C1FBA}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Informedica.GenCore.Tests", "tests\Informedica.GenCore.Tests\Informedica.GenCore.Tests.fsproj", "{1411A8DF-E5F0-48E7-9F11-2D5A99BDD9B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{391AF72A-FACD-4E1B-B7FC-E984791C1FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391AF72A-FACD-4E1B-B7FC-E984791C1FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391AF72A-FACD-4E1B-B7FC-E984791C1FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391AF72A-FACD-4E1B-B7FC-E984791C1FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1411A8DF-E5F0-48E7-9F11-2D5A99BDD9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1411A8DF-E5F0-48E7-9F11-2D5A99BDD9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1411A8DF-E5F0-48E7-9F11-2D5A99BDD9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1411A8DF-E5F0-48E7-9F11-2D5A99BDD9B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
