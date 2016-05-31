@@ -12,7 +12,7 @@ module WrappedString =
 
         /// Create a success message
         let succMsg s = 
-            sprintf "Created Id %s" s
+            sprintf "Created %s" s
             |> Message.info
 
         /// Create a warnig message
@@ -23,7 +23,7 @@ module WrappedString =
         /// Create an error message
         let errMsg s msg = 
             msg 
-            |> sprintf "Couldn't create an id with %s because %s" s 
+            |> sprintf "Couldn't create with %s: %s" s
             |> Message.err
 
 
@@ -91,10 +91,10 @@ module WrappedString =
             else (Messages.errMsg s msg) |> Result.fail
 
         /// Lift to `Result`
-        let checkMinLengthR min msg = liftR (checkMinLength min) msg
+        let checkMinLengthR min t msg = liftR (checkMinLength min) t msg
 
         /// Lift to `Result`
-        let checkMaxLengthR max msg = liftR (checkMaxLength max) msg
+        let checkMaxLengthR max t msg = liftR (checkMaxLength max) t msg
 
         /// Lift to `Result`
         let firstIsLetterR msg = liftR firstIsLetter msg
@@ -115,6 +115,12 @@ module WrappedString =
 
         /// Max length of an `Id`
         let maxLength = 1000
+
+        let succMsg = sprintf "Id with %s"
+
+        let minMsg = sprintf "Id should be minimal %i" minLength
+        
+        let maxMsg = sprintf "Id should be maximal %i" maxLength
         
         /// Type to represent an identifier
         /// can be any sinlge line string without
@@ -125,49 +131,58 @@ module WrappedString =
 
         /// Create an `Id` and return the `Result`
         let create = 
-            let succ s = s |> Id |> Result.succWithMsg (s |> Messages.succMsg) 
+            let succ s = s |> Id |> Result.succWithMsg (s |> succMsg |> Messages.succMsg) 
             let canon s = s |> Canon.singleLineTrimmedR
             let valid s = 
                 s
-                |>  Validate.checkMinLengthR minLength (sprintf "smaller than %i" minLength)
-                >>= Validate.checkMaxLengthR maxLength (sprintf "larger than %i" maxLength)
+                |>  Validate.checkMinLengthR minLength minMsg
+                >>= Validate.checkMaxLengthR maxLength maxMsg
 
             WrappedValue.createResult succ canon valid
 
-        /// Apply the given function to the wrapped value
-        let apply = WrappedValue.apply
-
-        /// Get the wrapped value
-        let value = WrappedValue.value
-
-        /// Equality 
-        let equals = WrappedValue.equals 
-
-        /// Equality
-        let equalsValue = WrappedValue.equalsValue 
-
-        /// Comparison
-        let compareTo = WrappedValue.compareTo
-
-        /// Bind for composition
-        let bind = WrappedValue.bind
-
         /// Turn an `Id` to a string
-        let toString (Id s) = s
+        let toString id : string = id |> WrappedValue.value
 
-    /// Helper functions for the `Name` type
+    /// Type and functions that represent and deal 
+    /// with the `Name` type
     [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
     module Name =
         
-        type Name = Name of string
+        open Informedica.GenCore.Lib.Result.Operators
 
-        /// Create a `Name` from a list of strings that 
-        let create s = s |> Name
+        /// Min length of an `Id`
+        let minLength = 1
 
-        let apply f (n: Name) = n |> f
+        /// Max length of an `Id`
+        let maxLength = 1000
+        
+        let succMsg = sprintf "Name with %s"
 
-        let lift f = fun (Name s) -> s |> f |> Name
+        let minMsg = sprintf "Name should be minimal %i" minLength
+        
+        let maxMsg = sprintf "Name should be maximal %i" maxLength
+        
+        let lettrMsg = sprintf "Name shouod only contain letters, not %s"
 
-        let toString (Name s) = s
+        /// Type to represent an identifier
+        /// can be any sinlge line string without
+        /// trailing or preceding spaces.
+        type Name = Name of string with
+            interface WrappedValue.IWrappedValue<string> with
+                member x.Value = let (Name s) = x in s
 
+        /// Create an `Name` and return the `Result`
+        let create = 
+            let succ s = s |> Name |> Result.succWithMsg (s |> succMsg |> Messages.succMsg) 
+            let canon s = s |> Canon.singleLineTrimmedR
+            let valid s = 
+                s
+                |>  Validate.checkMinLengthR minLength minMsg
+                >>= Validate.checkMaxLengthR maxLength maxMsg
+                >>= Validate.onlyLettersR (lettrMsg s)
+
+            WrappedValue.createResult succ canon valid
+
+        /// Turn an `Name` to a string
+        let toString n : string = n |> WrappedValue.value
 

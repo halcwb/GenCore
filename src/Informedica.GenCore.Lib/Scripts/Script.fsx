@@ -11,4 +11,6 @@ test |> NullCheck.isNull
 
 "1" 
 |> WrappedString.Id.create
->>= (fun id -> let s = id |> WrappedString.Id.value in printfn "%s" s; id |> Result.succNoMsg)
+>>= (fun id -> let s = id |> WrappedValue.value in printfn "%s" s; id |> Result.succNoMsg)
+
+String.replicate 999 "n" |> WrappedString.Name.create
