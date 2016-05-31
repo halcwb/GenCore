@@ -63,7 +63,7 @@ module WrappedValue =
     let createResult succ canon valid value =
         try
             if value |> box |> isNull then 
-                NullException |> Message.exc |> Result.fail
+                NullException |> raise
             else 
                 value 
                 |> canon
