@@ -62,13 +62,16 @@
     <Compile Include="String.fs" />
     <Compile Include="Regex.fs" />
     <Compile Include="Result.fs" />
+    <Compile Include="Request.fs" />
     <Compile Include="WrappedValue.fs" />
     <Compile Include="WrappedString.fs" />
     <None Include="Scripts\load-references-debug.fsx" />
     <None Include="Scripts\load-project-debug.fsx" />
-    <None Include="Scripts\Script.fsx" />
+    <None Include="Scripts\Result.fsx" />
     <None Include="Scripts\load-references-release.fsx" />
     <None Include="Scripts\load-project-release.fsx" />
+    <None Include="Scripts\Capability.fsx" />
+    <None Include="Scripts\TicTacToe.fsx" />
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>

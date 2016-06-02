@@ -13,10 +13,10 @@ module Message =
     /// * Warning when there is a success but might not be what is expected
     /// * Error when there is no success but the user can do something about it
     /// * Exception when there is no success and only a programmer can fix it
-    type Message = 
-        | Info    of string
-        | Warning of string
-        | Error   of string
+    type Message<'TInfo, 'TWarn, 'TErr> = 
+        | Info    of 'TInfo
+        | Warning of 'TWarn
+        | Error   of 'TErr
         | Except  of Exception
 
     /// Create an info `Message`
@@ -30,12 +30,6 @@ module Message =
 
     /// Create an exception `Message`
     let exc e = e |> Except
-
-    let apply fInfo fWarn fErr fExc = function
-        | Info s    -> s |> fInfo
-        | Warning s -> s |> fWarn
-        | Error s   -> s |> fErr
-        | Except s  -> s |> fExc 
 
 
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]

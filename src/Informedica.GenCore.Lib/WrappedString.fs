@@ -7,25 +7,6 @@ module WrappedString =
     open Informedica.GenUtils.Lib
     open Informedica.GenUtils.Lib.BCL
 
-    /// Messsages for `WrappedString`
-    module Messages =
-
-        /// Create a success message
-        let succMsg s = 
-            sprintf "Created %s" s
-            |> Message.info
-
-        /// Create a warnig message
-        let warnMsg s1 s2 = 
-            sprintf "Changed original %s to %s" s1 s2 
-            |> Message.warn
-
-        /// Create an error message
-        let errMsg s msg = 
-            msg 
-            |> sprintf "Couldn't create with %s: %s" s
-            |> Message.err
-
 
     /// Functions to canonicalize a `string`
     module Canon =
@@ -48,25 +29,27 @@ module WrappedString =
 
         /// Check whether string is changed and return
         /// a `Result`
-        let liftR f s = 
+        let liftR f msg s = 
             let s' = s |> f
             if s' = s then s |> Result.succNoMsg
-            else s'          |> Result.succWithMsg (Messages.warnMsg s s')
+            else s'          |> Result.succWithMsg (s' |> msg)
 
         /// Return value as `Result`
-        let singleLineR = liftR singleLine
+        let inline singleLineR msg s = 
+            liftR singleLine msg s 
 
         /// Return value as `Result`
-        let singleLineTrimmedR = liftR singleLineTrimmed
+        let inline singleLineTrimmedR msg s = liftR singleLineTrimmed msg s
         
         /// Return value as `Result`
-        let singleLineTrimmedCapitalizedR = liftR singleLineTrimmedCapitalized
+        let inline singleLineTrimmedCapitalizedR msg s = 
+            liftR singleLineTrimmedCapitalized msg s 
 
         /// Return value as `Result`
-        let singleLineTrimmedLowerR = liftR singleLineTrimmedLower
+        let inline singleLineTrimmedLowerR msg s = liftR singleLineTrimmedLower msg s 
 
         /// Return value as `Result`
-        let singleLineTrimmedUpperR = liftR singleLineTrimmedUpper
+        let inline singleLineTrimmedUpperR msg s = liftR singleLineTrimmedUpper msg s 
 
 
     /// Functions to validate a `string` 
@@ -86,21 +69,22 @@ module WrappedString =
 
         /// Check whether string is valid and return
         /// a `Result`
-        let liftR f msg s = 
-            if s |> f then s             |> Result.succNoMsg
-            else (Messages.errMsg s msg) |> Result.fail
+        let inline liftR f msg s = 
+            if s |> f then s |> Result.succNoMsg
+            else s |> msg    |> Result.fail
 
         /// Lift to `Result`
-        let checkMinLengthR min t msg = liftR (checkMinLength min) t msg
+        let checkMinLengthR min msg s = 
+            liftR (checkMinLength min) msg s 
 
         /// Lift to `Result`
-        let checkMaxLengthR max t msg = liftR (checkMaxLength max) t msg
+        let checkMaxLengthR max msg s = liftR (checkMaxLength max) msg s 
 
         /// Lift to `Result`
-        let firstIsLetterR msg = liftR firstIsLetter msg
+        let firstIsLetterR msg s = liftR firstIsLetter msg s 
 
         /// Lift to `Result`
-        let onlyLettersR msg = liftR onlyLetters msg
+        let onlyLettersR msg s = liftR onlyLetters msg s 
 
 
     /// Type and functions that 
@@ -110,17 +94,26 @@ module WrappedString =
 
         open Informedica.GenCore.Lib.Result.Operators
 
-        /// Min length of an `Id`
-        let minLength = 1
+        /// Messsages for `Id`
+        module Message =
 
-        /// Max length of an `Id`
-        let maxLength = 1000
+            type Info = Info of string
 
-        let succMsg = sprintf "Id with %s"
+            type Warning = 
+                | Changed   of string * string
+                
+            type Error =
+                | MinLength of string * int
+                | MaxLength of string * int
 
-        let minMsg = sprintf "Id should be minimal %i" minLength
-        
-        let maxMsg = sprintf "Id should be maximal %i" maxLength
+            let info s = s |> Info |> Message.Info
+
+            let changed s1 s2 = (s1, s2) |> Changed |> Message.warn
+                        
+            let minL l s = (s, l) |> MinLength |> Message.err
+            
+            let maxL l s = (s, l) |> MaxLength |> Message.err
+            
         
         /// Type to represent an identifier
         /// can be any sinlge line string without
@@ -130,39 +123,49 @@ module WrappedString =
                 member x.Value = let (Id s) = x in s
 
         /// Create an `Id` and return the `Result`
-        let create = 
-            let succ s = s |> Id |> Result.succWithMsg (s |> succMsg |> Messages.succMsg) 
-            let canon s = s |> Canon.singleLineTrimmedR
+        let create min max = 
+            let succ s  = s |> Id |> Result.succWithMsg (Message.info s)
+            let canon s = s |> Canon.singleLineTrimmedR (Message.changed s)
             let valid s = 
                 s
-                |>  Validate.checkMinLengthR minLength minMsg
-                >>= Validate.checkMaxLengthR maxLength maxMsg
+                |>  Validate.checkMinLengthR min (Message.minL min)
+                >>= Validate.checkMaxLengthR max (Message.maxL max)
 
             WrappedValue.createResult succ canon valid
 
         /// Turn an `Id` to a string
         let toString id : string = id |> WrappedValue.value
 
+    
     /// Type and functions that represent and deal 
     /// with the `Name` type
     [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
     module Name =
         
         open Informedica.GenCore.Lib.Result.Operators
-
-        /// Min length of an `Id`
-        let minLength = 1
-
-        /// Max length of an `Id`
-        let maxLength = 1000
         
-        let succMsg = sprintf "Name with %s"
+        /// Messsages for `Name`
+        module Message =
 
-        let minMsg = sprintf "Name should be minimal %i" minLength
-        
-        let maxMsg = sprintf "Name should be maximal %i" maxLength
-        
-        let lettrMsg = sprintf "Name shouod only contain letters, not %s"
+            type Info = Info of string
+
+            type Warning = 
+                | Changed   of string * string
+                
+            type Error =
+                | NoLetters of string
+                | MinLength of string * int
+                | MaxLength of string * int
+
+            let info s = s |> Info |> Message.Info
+
+            let changed s1 s2 = (s1, s2) |> Changed |> Message.warn
+                        
+            let minL l s = (s, l) |> MinLength |> Message.err
+            
+            let maxL l s = (s, l) |> MaxLength |> Message.err
+
+            let noLetters s = s |> NoLetters |> Message.err
 
         /// Type to represent an identifier
         /// can be any sinlge line string without
@@ -172,17 +175,18 @@ module WrappedString =
                 member x.Value = let (Name s) = x in s
 
         /// Create an `Name` and return the `Result`
-        let create = 
-            let succ s = s |> Name |> Result.succWithMsg (s |> succMsg |> Messages.succMsg) 
-            let canon s = s |> Canon.singleLineTrimmedR
+        let create min max = 
+            let succ s  = s |> Name |> Result.succWithMsg (Message.info s)
+            let canon s = s |> Canon.singleLineTrimmedR (Message.changed s)
             let valid s = 
                 s
-                |>  Validate.checkMinLengthR minLength minMsg
-                >>= Validate.checkMaxLengthR maxLength maxMsg
-                >>= Validate.onlyLettersR (lettrMsg s)
+                |>  Validate.checkMinLengthR min (Message.minL min)
+                >>= Validate.checkMaxLengthR max (Message.maxL max)
+                >>= Validate.onlyLettersR Message.noLetters
 
             WrappedValue.createResult succ canon valid
 
         /// Turn an `Name` to a string
         let toString n : string = n |> WrappedValue.value
+
 
