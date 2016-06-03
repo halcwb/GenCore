@@ -65,7 +65,7 @@ module Person =
                 | Message.Except e  -> e |> Message.Except
 
             nm
-            |> WrappedString.Name.create 1 100
+            |> WrappedString.Name.create 1 20
             |> Result.mapMessagesR map
 
         create
@@ -76,3 +76,14 @@ module Person =
 Person.Dto.create "1" "Frank"
 |> Person.fromDto
 
+Person.Dto.create "" ""
+|> Person.fromDto
+
+Person.Dto.create "11111111111111111111" "Frank"
+|> Person.fromDto
+
+Person.Dto.create "1" "1"
+|> Person.fromDto
+
+Person.Dto.create "1 " "  Frank  "
+|> Person.fromDto
