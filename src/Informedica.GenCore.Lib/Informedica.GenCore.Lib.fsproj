@@ -70,8 +70,6 @@
     <None Include="Scripts\Result.fsx" />
     <None Include="Scripts\load-references-release.fsx" />
     <None Include="Scripts\load-project-release.fsx" />
-    <None Include="Scripts\Capability.fsx" />
-    <None Include="Scripts\TicTacToe.fsx" />
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
