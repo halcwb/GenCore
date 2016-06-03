@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Namespaces - GenCore</title>
+    <title>Id - GenCore</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content="halcwb"/>
@@ -33,102 +33,105 @@
         <div class="span9" id="main">
           
 
-<h1>GenCore</h1>
 
 
-  <h2>Informedica.GenCore.Lib Namespace</h2>
-    <div>
-      <table class="table table-bordered module-list">
+<h1>Id</h1>
+<p>
+  <span>Namespace: Informedica.GenCore.Lib</span><br />
+  <span>Parent Module: <a href="informedica-gencore-lib-wrappedstring.html">WrappedString</a></span>
+</p>
+<div class="xmldoc">
+<p>Type and functions that
+deal with an identifier</p>
+
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="informedica-gencore-lib-wrappedstring-idmodule-id.html">Id</a>
+          </td>
+          <td class="xmldoc"><p>Type to represent an identifier
+can be any sinlge line string without
+trailing or preceding spaces.</p>
+
+</td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
     <thead>
       <tr><td>Module</td><td>Description</td></tr>
     </thead>
     <tbody>
         <tr>
           <td class="module-name">
-            <a href="informedica-gencore-lib-messagemodule.html">Message</a>
+            <a href="informedica-gencore-lib-wrappedstring-idmodule-message.html">Message</a>
           </td>
-          <td class="xmldoc"><p>Type and functions that model and process
-a <code>Message</code> to be used with the <code>Result</code> monad</p>
-
-</td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-requestmodule.html">Request</a>
-          </td>
-          <td class="xmldoc"></td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-responsemodule.html">Response</a>
-          </td>
-          <td class="xmldoc"></td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-resultmodule.html">Result</a>
-          </td>
-          <td class="xmldoc"></td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-wrappedstring.html">WrappedString</a>
-          </td>
-          <td class="xmldoc"><p>Types and functions to deal with
-value primitives</p>
-
-</td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-wrappedvalue.html">WrappedValue</a>
-          </td>
-          <td class="xmldoc"><p>Interface definition and functions to
-canonicalize, validate and construct
-wrapped values.</p>
+          <td class="xmldoc"><p>Messsages for <a href="informedica-gencore-lib-wrappedstring-idmodule-id.html" title="Id"><code>Id</code></a></p>
 
 </td>
         </tr>
     </tbody>
   </table>
 
-    </div>
-  <h2>Informedica.GenUtils.Lib Namespace</h2>
-    <div>
-      <table class="table table-bordered module-list">
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
     <thead>
-      <tr><td>Module</td><td>Description</td></tr>
+      <tr><td>Function or value</td><td>Description</td></tr>
     </thead>
     <tbody>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-genutils-lib-regexmodule.html">Regex</a>
-          </td>
-          <td class="xmldoc"><p>Module with <code>Regex</code> utiltity functions</p>
+      <tr>
+        <td class="member-name">
 
-</td>
-        </tr>
+          <code onmouseout="hideTip(event, '48', 48)" onmouseover="showTip(event, '48', 48)">
+            create min max
+          </code>
+          <div class="tip" id="48">
+            <strong>Signature:</strong> min:int -&gt; max:int -&gt; string -&gt; Result&lt;Id,Message&lt;Info,Warning,Error&gt;&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L126-126" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Create an <a href="informedica-gencore-lib-wrappedstring-idmodule-id.html" title="Id"><code>Id</code></a> and return the <code>Result</code></p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '49', 49)" onmouseover="showTip(event, '49', 49)">
+            toString id
+          </code>
+          <div class="tip" id="49">
+            <strong>Signature:</strong> id:IWrappedValue&lt;string&gt; -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L137-137" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Turn an <a href="informedica-gencore-lib-wrappedstring-idmodule-id.html" title="Id"><code>Id</code></a> to a string</p>
+
+
+        </td>
+      </tr>
     </tbody>
   </table>
-
-    </div>
-  <h2>Informedica.GenUtils.Lib.BCL Namespace</h2>
-    <div>
-      <table class="table table-bordered module-list">
-    <thead>
-      <tr><td>Module</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-genutils-lib-bcl-string.html">String</a>
-          </td>
-          <td class="xmldoc"></td>
-        </tr>
-    </tbody>
-  </table>
-
-    </div>
 
         </div>
         <div class="span3">

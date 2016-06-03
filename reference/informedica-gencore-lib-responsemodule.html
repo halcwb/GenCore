@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Namespaces - GenCore</title>
+    <title>Response - GenCore</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content="halcwb"/>
@@ -33,102 +33,78 @@
         <div class="span9" id="main">
           
 
-<h1>GenCore</h1>
 
 
-  <h2>Informedica.GenCore.Lib Namespace</h2>
-    <div>
-      <table class="table table-bordered module-list">
+<h1>Response</h1>
+<p>
+  <span>Namespace: Informedica.GenCore.Lib</span><br />
+</p>
+<div class="xmldoc">
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered type-list">
     <thead>
-      <tr><td>Module</td><td>Description</td></tr>
+      <tr><td>Type</td><td>Description</td></tr>
     </thead>
     <tbody>
         <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-messagemodule.html">Message</a>
-          </td>
-          <td class="xmldoc"><p>Type and functions that model and process
-a <code>Message</code> to be used with the <code>Result</code> monad</p>
-
-</td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-requestmodule.html">Request</a>
-          </td>
-          <td class="xmldoc"></td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-responsemodule.html">Response</a>
-          </td>
-          <td class="xmldoc"></td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-resultmodule.html">Result</a>
-          </td>
-          <td class="xmldoc"></td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-wrappedstring.html">WrappedString</a>
-          </td>
-          <td class="xmldoc"><p>Types and functions to deal with
-value primitives</p>
-
-</td>
-        </tr>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-gencore-lib-wrappedvalue.html">WrappedValue</a>
-          </td>
-          <td class="xmldoc"><p>Interface definition and functions to
-canonicalize, validate and construct
-wrapped values.</p>
-
-</td>
-        </tr>
-    </tbody>
-  </table>
-
-    </div>
-  <h2>Informedica.GenUtils.Lib Namespace</h2>
-    <div>
-      <table class="table table-bordered module-list">
-    <thead>
-      <tr><td>Module</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-genutils-lib-regexmodule.html">Regex</a>
-          </td>
-          <td class="xmldoc"><p>Module with <code>Regex</code> utiltity functions</p>
-
-</td>
-        </tr>
-    </tbody>
-  </table>
-
-    </div>
-  <h2>Informedica.GenUtils.Lib.BCL Namespace</h2>
-    <div>
-      <table class="table table-bordered module-list">
-    <thead>
-      <tr><td>Module</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td class="module-name">
-            <a href="informedica-genutils-lib-bcl-string.html">String</a>
+          <td class="type-name">
+            <a href="informedica-gencore-lib-responsemodule-response-2.html">Response<'P, 'R></a>
           </td>
           <td class="xmldoc"></td>
         </tr>
     </tbody>
   </table>
 
-    </div>
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)">
+            create (res, reqs)
+          </code>
+          <div class="tip" id="6">
+            <strong>Signature:</strong> (res:&#39;?7101 * reqs:Request&lt;&#39;?7102,&#39;?7101&gt; list) -&gt; Response&lt;&#39;?7102,&#39;?7101&gt;<br />
+                          <strong>Type parameters:</strong> '?7101, '?7102          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/Request.fs#L26-26" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
+            procReq caps r
+          </code>
+          <div class="tip" id="7">
+            <strong>Signature:</strong> caps:(&#39;?7104 -&gt; &#39;?7105 * Request&lt;&#39;?7106,&#39;?7105&gt; list) -&gt; r:Request&lt;&#39;?7107,&#39;?7104&gt; -&gt; Response&lt;&#39;?7106,&#39;?7105&gt;<br />
+                          <strong>Type parameters:</strong> '?7104, '?7105, '?7106, '?7107          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/Request.fs#L28-28" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
         </div>
         <div class="span3">

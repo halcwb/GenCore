@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Canon - GenCore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="halcwb"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/GenCore/content/style.css" />
+    <script type="text/javascript" src="/GenCore/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/halcwb/GenCore">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/GenCore/index.html">GenCore</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Canon</h1>
+<p>
+  <span>Namespace: Informedica.GenCore.Lib</span><br />
+  <span>Parent Module: <a href="informedica-gencore-lib-wrappedstring.html">WrappedString</a></span>
+</p>
+<div class="xmldoc">
+<p>Functions to canonicalize a <code>string</code></p>
+
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '37', 37)" onmouseover="showTip(event, '37', 37)">
+            liftR f msg s
+          </code>
+          <div class="tip" id="37">
+            <strong>Signature:</strong> f:(&#39;?6786 -&gt; &#39;?6786) -&gt; msg:(&#39;?6786 -&gt; &#39;?6787) -&gt; s:&#39;?6786 -&gt; Result&lt;&#39;?6786,&#39;?6787&gt;<br />
+                          <strong>Type parameters:</strong> '?6786, '?6787          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L32-32" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Check whether string is changed and return
+a <code>Result</code></p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '38', 38)" onmouseover="showTip(event, '38', 38)">
+            singleLine s
+          </code>
+          <div class="tip" id="38">
+            <strong>Signature:</strong> s:string -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L15-15" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Make <strong>s</strong> a single line string</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '39', 39)" onmouseover="showTip(event, '39', 39)">
+            singleLineR msg s
+          </code>
+          <div class="tip" id="39">
+            <strong>Signature:</strong> msg:(string -&gt; &#39;?6789) -&gt; s:string -&gt; Result&lt;string,&#39;?6789&gt;<br />
+                          <strong>Type parameters:</strong> '?6789          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L38-38" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return value as <code>Result</code></p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '40', 40)" onmouseover="showTip(event, '40', 40)">
+            singleLineTrimmed 
+          </code>
+          <div class="tip" id="40">
+            <strong>Signature:</strong> string -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L19-19" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '41', 41)" onmouseover="showTip(event, '41', 41)">
+            singleLineTrimmedCapitalized 
+          </code>
+          <div class="tip" id="41">
+            <strong>Signature:</strong> string -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L22-22" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Make a single line trimmed capitalized string</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '42', 42)" onmouseover="showTip(event, '42', 42)">
+            singleLineTrimmedCapitalizedR msg s
+          </code>
+          <div class="tip" id="42">
+            <strong>Signature:</strong> msg:(string -&gt; &#39;?6793) -&gt; s:string -&gt; Result&lt;string,&#39;?6793&gt;<br />
+                          <strong>Type parameters:</strong> '?6793          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L45-45" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return value as <code>Result</code></p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '43', 43)" onmouseover="showTip(event, '43', 43)">
+            singleLineTrimmedLower 
+          </code>
+          <div class="tip" id="43">
+            <strong>Signature:</strong> string -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L25-25" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Make a single line trimmed lower case string</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '44', 44)" onmouseover="showTip(event, '44', 44)">
+            singleLineTrimmedLowerR msg s
+          </code>
+          <div class="tip" id="44">
+            <strong>Signature:</strong> msg:(string -&gt; &#39;?6795) -&gt; s:string -&gt; Result&lt;string,&#39;?6795&gt;<br />
+                          <strong>Type parameters:</strong> '?6795          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L49-49" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return value as <code>Result</code></p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '45', 45)" onmouseover="showTip(event, '45', 45)">
+            singleLineTrimmedR msg s
+          </code>
+          <div class="tip" id="45">
+            <strong>Signature:</strong> msg:(string -&gt; &#39;?6791) -&gt; s:string -&gt; Result&lt;string,&#39;?6791&gt;<br />
+                          <strong>Type parameters:</strong> '?6791          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L42-42" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return value as <code>Result</code></p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '46', 46)" onmouseover="showTip(event, '46', 46)">
+            singleLineTrimmedUpper 
+          </code>
+          <div class="tip" id="46">
+            <strong>Signature:</strong> string -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L28-28" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Make a single line trimmed upper case string</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '47', 47)" onmouseover="showTip(event, '47', 47)">
+            singleLineTrimmedUpperR msg s
+          </code>
+          <div class="tip" id="47">
+            <strong>Signature:</strong> msg:(string -&gt; &#39;?6797) -&gt; s:string -&gt; Result&lt;string,&#39;?6797&gt;<br />
+                          <strong>Type parameters:</strong> '?6797          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/halcwb/GenCore/tree/master/src/Informedica.GenCore.Lib/WrappedString.fs#L52-52" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return value as <code>Result</code></p>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/GenCore/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">GenCore</li>
+            <li><a href="/GenCore/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/Informedica.GenCore.Lib">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/halcwb/GenCore">Source Code on GitHub</a></li>
+            <li><a href="/GenCore/license.html">License</a></li>
+            <li><a href="/GenCore/release-notes.html">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="/GenCore/tutorial.html">Sample tutorial</a></li>
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/GenCore/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/halcwb/GenCore"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>
