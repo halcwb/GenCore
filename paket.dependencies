@@ -21,9 +21,9 @@ nuget Informedica.GenUtils.Lib
 
 // group test
 
-nuget FsUnit
-nuget NUnit ~> 2
-nuget NUnit.Runners ~> 2
-nuget Unquote
+nuget NUnit < 3.0
+nuget NUnit.Runners < 3.0
 nuget FsCheck
 nuget FsCheck.NUnit
+nuget Unquote
+nuget FsUnit
