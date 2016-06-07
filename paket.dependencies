@@ -1,8 +1,11 @@
 redirects: on
+framework: auto-detect
+
 source https://nuget.org/api/v2
 
 // group build
 
+nuget FSharp.Core == 3.1.2.1
 nuget FSharp.Formatting
 nuget Fake
 nuget SourceLink.Fake
